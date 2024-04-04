@@ -6,6 +6,8 @@
 
 [Shell grammar](https://github.com/AnoukBV/memo/blob/main/bash_man.md#shell-grammar)
 
+[BashParser](https://mywiki.wooledge.org/BashParser)
+
 [Parsing expressions by precedence climbing](https://eli.thegreenplace.net/2012/08/02/parsing-expressions-by-precedence-climbing)
 
 [Parse tree](https://en.wikipedia.org/wiki/Parse_tree)
