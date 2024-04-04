@@ -14,10 +14,14 @@
 
 [Abstract Syntax Tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree)
 
+--------------------------------------------------
 ## SUMMARY
 
 Parsing = treating user's input.
 Which we can do in  systemic way, just like bash does.
+
+--------------------------------------------------
+![Bash component architecture](https://miro.medium.com/v2/resize:fit:640/format:webp/1*Tcrp-wDL3JtLHNHpvvBlNA.png)
 
 ## Lexical analysis
 
