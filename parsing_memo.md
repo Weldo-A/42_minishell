@@ -16,6 +16,8 @@
 
 [Abstract Syntax Tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree)
 
+[Abstract vs Concrete Syntax Trees](https://eli.thegreenplace.net/2009/02/16/abstract-vs-concrete-syntax-trees/)
+
 --------------------------------------------------
 ## SUMMARY
 
@@ -92,17 +94,32 @@ Parent nodes and children nodes.
 
 Leaf nodes are terminal functions. Lexical tokens.
 
+CLE is still represented concretely, but in parsed form (above we see the text of the sentence presrved in the leaves). Usually, the concrete syntax tree only exists as a conceptual entity representing the parse structure of your source text.
+
+Parse trees are a mapping of the grammar of the entry, they don't transform the input. They are not useful to work with. Trivial to build **when you have your rules.**
+
+Parse tree for:
+```C
+return a + 2;
+```
+
+![Parse tree](https://eli.thegreenplace.net/images/2009/02/parsetree1.png)
+
+AST for the same entry, we see that even the hierarchy has been changed.
+
+![AST a + 2](https://eli.thegreenplace.net/images/2009/02/ast1.png)
+
 ### Abstract syntax tree
 
 Why abstract? It does not represent the details of the sentence, but **just the structural or content related details**.
 
 ![abstract syntax tree](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Abstract_syntax_tree_for_Euclidean_algorithm.svg/600px-Abstract_syntax_tree_for_Euclidean_algorithm.svg.png)
 
-Result of contextual analysis, we add information on the parse tree.
-
-Data structure that represents a CLE. Final phase of syntax analysis. Useful because:
+Data structure that represents a CLE. Final phase of syntax analysis, last operation of the front-end of a compiler. Useful because:
 - It can be edited with further information. Source code stays unchanged.
 - It does not include delimiters.
 - Extra information about the program is included. EX: position of each element, used to print corresponding useful error messages (about syntax for example!!)
+
+The AST is the form that is convenient for further manipulation. AST oncly contains semantics of the code, CST also includes information on how exactly the code was written. CST keeps things like parenthesises, quotes tc that will later be used to expand etc.
 
 ### Precedence climbing technique
