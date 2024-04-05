@@ -16,3 +16,8 @@ echo ${!v\*}
 count=$(wc -l <(sort myfile.txt))
 for word in $sentence; do echo "Word: $word"; done
 echo $'anuk\n\n\n\n'
+echo anouk"anouk"
+echo 'anouk'"anouk"
+echo "anouk"$a"anou\nyoyo" | cat -e
+echo "anouk\"$a\"anou\nyoyo" | cat -e
+echo "anouk'$a'anou\nyoyo" | cat -e
