@@ -181,6 +181,49 @@ When precedence is the same : associativity.
 How does bash handle nested expressions ? Do we even have to handle brackets ?
 
 
+## BASH
+
+Reserved words - Words - Operators(on or more metacharactes).
+
+Variables are user settable or built in. 
+Assigning a value is the only way to set a variable.
+Variables are strings.
+A word beginning with a dollar introduces a variable or parameter reference.
+Integer type variables are treated as numbers: str is expanded as an artihmetic expression assigned to the variable.
+Arrays can be indexed or associative.
+
+Hash tables to store and retrieve variables. Variable scoping: linked list of these hash tables. Different variable scopes for shell function calls and tmporary scops for variables set by assignment statements preceding a command.
+
+**Simple shell command**
+
+Command name, args, redirections. There can be pipelines, shll functions, and shell scripts.
+
+Question to be askd(man bash) : what is passed to a shubshll??
+
+Nearly all of the shell constructs are implemented using:
+- arrays
+- trees
+- singly-linked lists and doubly-linked lists
+- hash tables
+
+"The basic data structure the shell uses to pass information from one stage to the next, and to operate on data units within each processing stage, is the WORD_DESC":
+```C
+typedef struct word_desc {
+  char *word;           /* Zero terminated string. */
+  int flags;            /* Flags associated with this word. */
+} WORD_DESC;
+```
+"Words are combined into, for example, argument lists, using simple linked lists:"
+```C
+typedef struct word_list {
+  struct word_list *next;
+  WORD_DESC *word;
+} WORD_LIST;
+```
+"WORD_LISTs are pervasive throughout the shell. A simple command is a word list, the result of expansion is a word list, and the built-in commands each take a word list of arguments."
+
+Input processing. From str to command. Command line editing: readline library implemented for bash.
+
 ## The Bash Parser
 
 All of this should happen after tokenizing/lexing.
