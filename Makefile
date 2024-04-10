@@ -1,0 +1,50 @@
+NAME := minishell
+
+LIBS := libft
+LIBS_TGT := lib/libft/libft.a
+
+HEAD := headers lib/libft/headers
+
+SRC_DIR := src
+SRC_FILES := main.c
+
+SRC := $(SRC_FILES:%.c=$(SRC_DIR)/%.c)
+
+BUILD_DIR := .build
+OBJ := $(SRC:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
+DEPS := $(OBJ:.o=.d)
+
+CC := clang
+CFLAGS := -Wall -Wextra -Werror -g
+PREPFLAGS := $(addprefix -I, $(HEAD)) -MMD -MP
+LDFLAGS := -Llib/libft -Lheaders -lreadline -lhistory
+LDLIBS := -lft
+
+DIR_DUP = mkdir -p $(@D)
+
+all: $(NAME)
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	@$(DIR_DUP)
+	@$(CC) $(CFLAGS) $(PREPFLAGS) -c -o $@ $<
+
+$(NAME): $(OBJ)
+	@make -C lib/libft -s
+	@$(CC) $(LDFLAGS) $(OBJ) $(LIBS_TGT) $(LDLIBS) -o $(NAME)
+	@echo "\033[1;32m[mandatory compiled]\033[1;00m"
+
+-include $(DEPS)
+
+clean:
+	@make -C lib/libft clean
+	@rm -rf $(OBJ) $(DEPS) $(BUILD_DIR)
+	@echo "\033[1;32m[.o removed]\033[1;00m"
+
+fclean: clean
+	@make -C lib/libft fclean
+	@rm -rf $(NAME)
+	@echo "\033[1;32m[bin removed]\033[1;00m"
+
+re: fclean all
+
+.PHONY: akk re fclean clean
