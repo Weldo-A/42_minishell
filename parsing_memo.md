@@ -10,6 +10,14 @@
 
 [Parsing expressions by precedence climbing](https://eli.thegreenplace.net/2012/08/02/parsing-expressions-by-precedence-climbing)
 
+[Recursive descent parsing](https://www.youtube.com/watch?v=SToUyjAsaFk)
+
+[Parsing expression by recursive descent](https://www.engr.mun.ca/~theo/Misc/exp_parsing.htm)
+
+[Let's write a recursive descent parser in C (Part 1)](https://www.youtube.com/watch?v=N55XNj8KjC4)
+
+[Making a shell grammar for a recursive descent parser](https://stackoverflow.com/questions/71769632/making-a-shell-grammar-for-a-recursive-descent-parser)
+
 [Parse tree](https://en.wikipedia.org/wiki/Parse_tree)
 
 [Context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar)
