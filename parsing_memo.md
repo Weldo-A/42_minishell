@@ -45,9 +45,9 @@ Building a parser :
 
 [Context Free Grammar](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#context-free-grammar)
 
-[Parse tree]
+[Parse tree](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#parse-tree)
 
-[Abstract Syntax Tree]
+[Abstract Syntax Tree](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#abstract-syntax-tree)
 
 [Precedence climbing]
 
