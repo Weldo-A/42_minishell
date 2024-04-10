@@ -40,8 +40,8 @@
 Building a parser :
 
 [The two main stages of front-end](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#the-two-main-stages-of-front-end)
-- [Lexical analysis]
-- [Parsing]
+- [Lexical analysis](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#lexical-analysis)
+- [Parsing](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#parsing)
 
 [Context Free Grammar]
 
