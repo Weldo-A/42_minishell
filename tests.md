@@ -21,3 +21,4 @@ echo 'anouk'"anouk"
 echo "anouk"$a"anou\nyoyo" | cat -e
 echo "anouk\"$a\"anou\nyoyo" | cat -e
 echo "anouk'$a'anou\nyoyo" | cat -e
+plusieurs operateur |||

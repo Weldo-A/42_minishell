@@ -2,11 +2,17 @@
 
 ## Links
 
+### Bash\/Unix shell  grammar
+
 [Simple command expansion](https://github.com/AnoukBV/memo/blob/main/bash_man.md#simple-command-expansion)
 
 [Shell grammar](https://github.com/AnoukBV/memo/blob/main/bash_man.md#shell-grammar)
 
 [The Bourne-Again Shell](https://aosabook.org/en/v1/bash.html)
+
+[Shell Command Language](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html)
+
+### Building a parser
 
 [Parsing expressions by precedence climbing](https://eli.thegreenplace.net/2012/08/02/parsing-expressions-by-precedence-climbing)
 
@@ -31,6 +37,8 @@
 --------------------------------------------------
 ## SUMMARY
 
+Building a parser :
+
 [The two main stages of front-end]
 - [Lexical analysis]
 - [Parsing]
@@ -42,6 +50,10 @@
 [Abstract Syntax Tree]
 
 [Precedence climbing]
+
+Extension of Bash Man :
+
+[Bash grammar]
 
 --------------------------------------------------
 Parsing = treating user's input.
@@ -191,6 +203,8 @@ How does bash handle nested expressions ? Do we even have to handle brackets ?
 
 ## BASH
 
+### Before parsing
+
 Reserved words - Words - Operators(on or more metacharactes).
 
 Variables are user settable or built in. 
@@ -214,7 +228,7 @@ Nearly all of the shell constructs are implemented using:
 - singly-linked lists and doubly-linked lists
 - hash tables
 
-"The basic data structure the shell uses to pass information from one stage to the next, and to operate on data units within each processing stage, is the WORD_DESC":
+"The basic data structure the shell uses to pass information from one stage to the next, and to operate on data units within each processing stage, is the WORD\_DESC":
 ```C
 typedef struct word_desc {
   char *word;           /* Zero terminated string. */
@@ -228,19 +242,28 @@ typedef struct word_list {
   WORD_DESC *word;
 } WORD_LIST;
 ```
-"WORD_LISTs are pervasive throughout the shell. A simple command is a word list, the result of expansion is a word list, and the built-in commands each take a word list of arguments."
+"WORD\_LISTs are pervasive throughout the shell. A simple command is a word list, the result of expansion is a word list, and the built-in commands each take a word list of arguments."
 
-Input processing. From str to command. Command line editing: readline library implemented for bash.
+**Not to be handled for minishell**:
 
-## The Bash Parser
+Input processing. From str to command. Command line editing: readline library implemented for bash. First step = breaking into lines. RL has a buffer, rl\_redisplay changes what is displayed on the terminal, according to what is actually in the buffer of RL. (int rl\_redisplay()). To change what's in the buffer : void rl\_replace\_line(const char \*text, int clear\_undo).
+
+### The Bash Parser
 
 All of this should happen after tokenizing/lexing.
 
 **To be escaped = stripped of their ability to mean anything special to Bash.**
 
-1. Read data to execute. Line by line except when nl is escaped by a reserved word like while ? Or by a quote etc.
+1. Lexical Analysis. Separates str into words (basic unit on which the parser operates).
 
-2. Processes quotes. Searches for quotes. Triggers a quote : searches for the next one. '' cancels special meanings. "" doesn't cancel \" \$ and \\
+Read data to execute. Line by line except when nl is escaped by a reserved word like while ? Or by a quote etc. Lexical analyzer takes line from readline, breaks them into tokens at metacharacters, **identifies the tokens** and passes them to the parser.
+
+For identification --> **context**.
+
+Aliasing is done here, but we don't need to implement that for minishell.
+
+**Metacharacters can be escaped**: backlash, single or double quotes. + \$\'...\' or \$\"...\".
+Processes quotes. Searches for quotes. Triggers a quote : searches for the next one. '' cancels special meanings. "" doesn't cancel \" \$ and \\
 ```bash
 $ echo 'Back\Slash $dollar "Quote"'
 Back\Slash $dollar "Quote"
@@ -269,7 +292,56 @@ Here, the quotes in the middle are either escaped or single so escaped by the do
 
 **Note**: All of the characters (except the \$ " \\) in between quotes are considered escaped by the bash parser.
 
-3. Split the data read into commands.
-with the ; operator.
+Lexical analyzer categorizes words according to the token type. To do so, it has to be given a certain number of informations by the parser regarding the context (ex: is it a here doc etc.). Command substitution: execution happens during parsing. \"A command substitution can be parsed and executed as part of expanding a prompt string in the middle of reading a command.\"
 
-4. Parse special operator.
+End of lexical analysis --> a **structure** representing a command. Passed to word expansion.
+
+2. Word expansions
+
+- Par and var expansions. Error management for minishell:
+```bash
+${parameter:-word}
+```
+expands to parameter if it's set, otherwise expands to word.
+
+- brace expansion (unneeded fo minishell)
+- command substitution (shell runs a cmd, collects the output)
+- tilde expansion
+- arithmetic expansion
+```bash
+$((expression))
+```
+- word splitting
+
+**Globbing**
+
+Each word resulting is interpreted as a potential pattern, bash tries to match it with an existing filename, including any leading directory path.
+
+WORD\_DESC and \_LIST are enough to handle expansions. DESC can hold all of the info required to handle expansion of a single word. flags in desc = info for use within the expansion stage + to pass info from one expansion stage to the next.
+> For instance, the parser uses a flag to tell the expansion and command execution stages that a particular word is a shell assignment statement, and the word expansion code uses flags internally to inhibit word splitting or note the presence of a quoted null string ("$x", where $x is unset or has a null value). Using a single character string for each word being expanded, with some kind of character encoding to represent additional information, would have proved much more difficult.
+
+**To Command execution**
+
+Input to the command execution stage = command structure built by the parser and a set of possibly expanded words.
+
+### BASH EXECUTION
+
+- redirections
+In parsing: lexical analyzer classified a word as a redirection containing a variable assignement. Parser created the redirection object wth a flag indicating assignement.
+In exec: the flag is interpreted and the fd is assigned to the correct variable.
+
+**The effect of redirections should not persist beyond the command completion.** Shell has to undo the effects. 
+
+> Since multiple redirections are implemented as simple lists of objects, the redirections used to undo are kept in a separate list. That list is processed when a command completes, but the shell has to take care when it does so, since redirections attached to a shell function or the "." builtin must stay in effect until that function or builtin completes. When it doesn't invoke a command, the exec builtin causes the undo list to simply be discarded, because redirections associated with exec persist in the shell environment.
+
+- Builtins
+Executed by the shell **without creating a new process**.
+>  For the most part, the builtins use the same standard expansion rules as any other command, with a couple of exceptions: the bash builtins that accept assignment statements as arguments (e.g., declare and export) use the same expansion rules for the assignment arguments as those the shell uses for variable assignments. This is one place where the flags member of the WORD\_DESC structure is used to pass information between one stage of the shell's internal pipeline and another.
+
+- Simple command execution
+
+If variables precede a command, the are passed to the executed command in its env. If not, the assignement **modifies the sell's state**.
+
+The execution environment is an exact duplicate of the shell environment, with minor modifications to things like signal disposition and files opened and closed by redirections.
+
+**Minishell must not handle compoumd commands."
