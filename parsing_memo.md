@@ -49,11 +49,11 @@ Building a parser :
 
 [Abstract Syntax Tree](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#abstract-syntax-tree)
 
-[Precedence climbing]
+[Recursive decent](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#recursive-descent-parser)
 
 Extension of Bash Man :
 
-[Bash grammar]
+[Bash](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#bash)
 
 --------------------------------------------------
 Parsing = treating user's input.
