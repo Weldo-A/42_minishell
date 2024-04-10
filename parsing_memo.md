@@ -39,7 +39,7 @@
 
 Building a parser :
 
-[The two main stages of front-end]
+[The two main stages of front-end](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#the-two-main-stages-of-front-end)
 - [Lexical analysis]
 - [Parsing]
 
