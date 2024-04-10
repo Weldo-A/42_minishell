@@ -54,6 +54,9 @@ Building a parser :
 Extension of Bash Man :
 
 [Bash](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#bash)
+- [Info](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#info)
+- [The Bash Parser](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#the-bash-parser)
+- [BASH EXECUTION](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#bash-execution)
 
 --------------------------------------------------
 Parsing = treating user's input.
@@ -203,7 +206,7 @@ How does bash handle nested expressions ? Do we even have to handle brackets ?
 
 ## BASH
 
-### Before parsing
+### Info
 
 Reserved words - Words - Operators(on or more metacharactes).
 
