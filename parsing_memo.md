@@ -43,7 +43,7 @@ Building a parser :
 - [Lexical analysis](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#lexical-analysis)
 - [Parsing](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#parsing)
 
-[Context Free Grammar]
+[Context Free Grammar](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#context-free-grammar)
 
 [Parse tree]
 
