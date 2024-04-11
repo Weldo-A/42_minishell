@@ -266,6 +266,7 @@ For identification --> **context**.
 Aliasing is done here, but we don't need to implement that for minishell.
 
 **Metacharacters can be escaped**: backlash, single or double quotes. + \$\'...\' or \$\"...\".
+
 Processes quotes. Searches for quotes. Triggers a quote : searches for the next one. '' cancels special meanings. "" doesn't cancel \" \$ and \\
 ```bash
 $ echo 'Back\Slash $dollar "Quote"'
