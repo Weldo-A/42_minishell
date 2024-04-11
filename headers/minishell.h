@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:11:16 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/11 10:52:27 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/11 11:56:00 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <dirent.h>
 # include <termios.h>
 # include "libft.h"
+# include "keys.h"
 
 typedef enum e_bool { false, true }	t_bool;
 
@@ -34,16 +35,13 @@ typedef struct s_wd_desc
 	int		flags;
 }	t_wd_desc;
 
-typedef struct s_wd_lst
-{
-	t_wd_lst	*next;
-	t_wd_desc	*word;
-}	t_wd_lst;
+// parsing
 
-typedef struct s_cmd_lst
-{
-	t_cmd_lst	*next;
-	t_wd_lst	*cmd;
-}	t_cmd_lst;
+void	parsing(char *str, t_list **inputs);
+char	**newlines(char *str, size_t *input_nb);
+
+//utils
+
+void	ft_error(void);
 
 #endif

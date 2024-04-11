@@ -4,4 +4,8 @@ main
 		readline
 	while pas exit ou signal genre sigkill
 		routine (input->parsing->exec->EXIT)
+			parsing
+				newlines
+				words
+				identification
 	free

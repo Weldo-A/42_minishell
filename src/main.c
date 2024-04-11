@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:55:08 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/10 19:52:08 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/11 11:31:35 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	init_signal(void)
 
 int	main(int argc, char **argv)
 {
+	t_cmd_lst	*inputs;
+
 	char *cle;
 	(void)argv;
 	if (argc != 1)
@@ -47,6 +49,7 @@ int	main(int argc, char **argv)
 		cle = readline("$ ");
 		if (ft_strlen(cle) > 0 && sigflag != SIGINT)
 			add_history(cle);
+		parsing(cle, &inputs);
 		free(cle);
 	}
 	return (0);
