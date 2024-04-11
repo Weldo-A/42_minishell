@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:11:16 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/11 12:57:17 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/11 14:29:03 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@
 # include "keys.h"
 
 typedef enum e_bool { false, true }	t_bool;
+
+typedef struct s_esc
+{
+	t_bool	is_quoted;
+	t_bool	is_simplequote;
+	t_bool	is_aquote;
+	t_bool	is_closing;
+}	t_esc;
 
 typedef struct s_wd_desc
 {
