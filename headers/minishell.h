@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:11:16 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/10 16:25:25 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:40:54 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,20 @@
 # include <readline/history.h>
 # include <dirent.h>
 # include <termios.h>
-
 # include "libft.h"
+
+typedef enum e_bool { false, true }	t_bool;
+
+typedef struct	word_desc
+{
+	char	*word;
+	int		flags;
+}	WORD_DESC;
+
+typedef struct	word_list
+{
+	WORD_LIST	*next;
+	WORD_DESC	*word;
+}	WORD_LIST;
 
 #endif
