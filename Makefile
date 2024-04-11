@@ -6,7 +6,7 @@ LIBS_TGT := lib/libft/libft.a
 HEAD := headers lib/libft/headers
 
 SRC_DIR := src
-SRC_FILES := main.c errors.c parsing/newlines.c parsing/parsing.c
+SRC_FILES := totrash.c main.c errors.c parsing/newlines.c parsing/parsing.c
 
 SRC := $(SRC_FILES:%.c=$(SRC_DIR)/%.c)
 
@@ -47,4 +47,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: akk re fclean clean
+.PHONY: all re fclean clean

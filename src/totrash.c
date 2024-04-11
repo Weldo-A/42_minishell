@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   totrash.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 10:33:37 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/11 12:57:43 by aboulore         ###   ########.fr       */
+/*   Created: 2024/04/11 12:54:38 by aboulore          #+#    #+#             */
+/*   Updated: 2024/04/11 13:03:32 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	parsing(char *str, t_list **inputs)
+void	print_2d_array(char **str)
 {
-	size_t		input_nb;
-	char	**inputs_arr;
+	size_t	i;
 
-	inputs = NULL;
-	inputs_arr = newlines(str, &input_nb);
-	print_2d_array(inputs_arr);
-//	words; //according to what is a word sep-metach THAT ARE NOT ESCAPED
-//	identifcation;
+	i = 0;
+	while (str[i])
+	{
+		ft_putstr("NEW_CMD: ");
+		ft_putstr(str[i]);
+		i++;
+	}
 }
