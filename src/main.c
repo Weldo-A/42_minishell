@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:55:08 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/11 12:51:07 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/11 16:38:49 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	main(int argc, char **argv)
 	if (argc != 1)
 		exit(0);
 	init_signal();
+	inputs = NULL;
 	while (1)
 	{
 		cle = readline("$ ");

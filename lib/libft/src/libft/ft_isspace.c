@@ -1,40 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newlines.c                                         :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 10:53:28 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/11 16:43:34 by aboulore         ###   ########.fr       */
+/*   Created: 2024/04/11 16:13:46 by aboulore          #+#    #+#             */
+/*   Updated: 2024/04/11 16:13:48 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-static size_t	count_inputs(char *str)
+int	ft_isspace(int c)
 {
-	size_t	count;
-	size_t	i;
-
-	i = 0;
-	count = 1;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			count++;
-		i++;
-	}
-	return (count);
-}
-
-char	**newlines(char *str, size_t *input_nb)
-{
-	char	**inputs;
-
-	*input_nb = count_inputs(str);
-	inputs = ft_split(str, '\n');
-	if (!inputs)
-		ft_error();
-	return (inputs);
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (2048);
+	else
+		return (0);
 }
