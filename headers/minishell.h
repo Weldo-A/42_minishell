@@ -6,12 +6,12 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:11:16 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/11 10:40:54 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:52:27 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
-#define MINISHELL_H
+# define MINISHELL_H
 
 # include <unistd.h>
 # include <stdio.h>
@@ -28,16 +28,22 @@
 
 typedef enum e_bool { false, true }	t_bool;
 
-typedef struct	word_desc
+typedef struct s_wd_desc
 {
 	char	*word;
 	int		flags;
-}	WORD_DESC;
+}	t_wd_desc;
 
-typedef struct	word_list
+typedef struct s_wd_lst
 {
-	WORD_LIST	*next;
-	WORD_DESC	*word;
-}	WORD_LIST;
+	t_wd_lst	*next;
+	t_wd_desc	*word;
+}	t_wd_lst;
+
+typedef struct s_cmd_lst
+{
+	t_cmd_lst	*next;
+	t_wd_lst	*cmd;
+}	t_cmd_lst;
 
 #endif
