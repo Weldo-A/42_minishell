@@ -39,24 +39,24 @@
 
 Building a parser :
 
-[The two main stages of front-end](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#the-two-main-stages-of-front-end)
-- [Lexical analysis](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#lexical-analysis)
-- [Parsing](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#parsing)
+[The two main stages of front-end](https://github.com/AnoukBV/42_minishell/blob/master/nottosubmit/parsing_memo.md#the-two-main-stages-of-front-end)
+- [Lexical analysis](https://github.com/AnoukBV/42_minishell/blob/master/nottosubmit/parsing_memo.md#lexical-analysis)
+- [Parsing](https://github.com/AnoukBV/42_minishell/blob/master/nottosubmit/parsing_memo.md#parsing)
 
-[Context Free Grammar](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#context-free-grammar)
+[Context Free Grammar](https://github.com/AnoukBV/42_minishell/blob/master/nottosubmit/parsing_memo.md#context-free-grammar)
 
-[Parse tree](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#parse-tree)
+[Parse tree](https://github.com/AnoukBV/42_minishell/blob/master/nottosubmit/parsing_memo.md#parse-tree)
 
-[Abstract Syntax Tree](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#abstract-syntax-tree)
+[Abstract Syntax Tree](https://github.com/AnoukBV/42_minishell/blob/master/nottosubmit/parsing_memo.md#abstract-syntax-tree)
 
-[Recursive decent](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#recursive-descent-parser)
+[Recursive decent](https://github.com/AnoukBV/42_minishell/blob/master/nottosubmit/parsing_memo.md#recursive-descent-parser)
 
 Extension of Bash Man :
 
-[Bash](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#bash)
-- [Info](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#info)
-- [The Bash Parser](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#the-bash-parser)
-- [BASH EXECUTION](https://github.com/AnoukBV/42_minishell/blob/master/parsing_memo.md#bash-execution)
+[Bash](https://github.com/AnoukBV/42_minishell/blob/master/nottosubmit/parsing_memo.md#bash)
+- [Info](https://github.com/AnoukBV/42_minishell/blob/master/nottosubmit/parsing_memo.md#info)
+- [The Bash Parser](https://github.com/AnoukBV/42_minishell/blob/master/nottosubmit/parsing_memo.md#the-bash-parser)
+- [BASH EXECUTION](https://github.com/AnoukBV/42_minishell/blob/master/nottosubmit/parsing_memo.md#bash-execution)
 
 --------------------------------------------------
 Parsing = treating user's input.
