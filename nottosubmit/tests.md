@@ -42,3 +42,9 @@ tests de separation avant identification (normal que les guillemets soient tjrs 
 
 a"no"|uk" : fonctionne, 3 words = a"no" | uk"
 a"no"'||u'k" : fonctionne, ne donne qu'un seul token
+
+
+**test ne fonctionne pas** : 
+```
+"r'tt)"
+```
