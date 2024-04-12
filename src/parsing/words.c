@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 13:17:49 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 23:48:34 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/13 00:36:47 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static t_list	*input_into_words(char *str)
 {
 	t_list		*words_list;
 	t_esc		esc_status;
-//	t_wd_desc	*tmp;
+	//t_wd_desc	*tmp;
 	t_wd_desc	*tmp_w;
 	size_t		i;
 	size_t		j;
@@ -79,12 +79,13 @@ static t_list	*input_into_words(char *str)
 			if (j != i)
 			{
 				tmp_w = new_wd_desc(0, ft_substr(str, j, i - j));
+				//printf("%s\n", tmp_w->word);
 				ft_lstadd_back(&words_list, ft_lstnew((void *)tmp_w));
 
-	//			tmp = (t_wd_desc*)words_list->content;
-	//			printf("\ninputintowrds = %s\n", tmp->word);
-	//			printf("\nwl addr = %p\n", words_list);
-	//			printf("\nwl.cnt addr = %p\n", words_list->content);
+				//tmp = (t_wd_desc*)words_list->content;
+				//printf("\ninputintowrds = %s\n", tmp->word);
+				//printf("\nwl addr = %p\n", words_list);
+				//printf("\nwl.cnt addr = %p\n", words_list->content);
 			}
 			if (!ft_isspace(str[i]))
 			{
@@ -112,19 +113,21 @@ static t_list	*input_into_words(char *str)
 	return (words_list);
 }
 
-t_list	*break_into_words(char **inputs_array, size_t input_nb)
+void	break_into_words(t_list **inputs, char **inputs_array, size_t input_nb)
 {
 	size_t	i;
-	t_list	*inputs;
+	t_list	*new;
 
 	i = 0;
-	inputs = ft_calloc(sizeof(t_list), input_nb);
+	//inputs = ft_calloc(sizeof(t_list), input_nb);
 	while (i < input_nb)
 	{
-		inputs[i] = *input_into_words(inputs_array[i]);
+		new = ft_lstnew(input_into_words(inputs_array[i]));
+		//inputs[i] = *input_into_words(inputs_array[i]);
+		ft_lstadd_back(inputs, new);
 		free(inputs_array[i]);
 		i++;
 	}
 	free(inputs_array);
-	return (inputs);
+	//return (inputs);
 }
