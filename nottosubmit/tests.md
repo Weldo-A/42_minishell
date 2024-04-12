@@ -36,3 +36,9 @@ for word in $sentence; do echo "Word: $word"; done
 echo $"\*" (une seule str, param separes par premier char de IFS variable : "$\*"  is equivalent to "$1c$2c..." & un esp si IFS = unset & pas de sep si IFS est null)
 
 **pour les tests comme ca, c'est utile pour gestion d'erreur: bash accepterait, considererait les carac comme des caracteres speciaux avec expansion etc, pr nous = caractere normal**
+
+
+tests de separation avant identification (normal que les guillemets soient tjrs là)
+
+a"no"|uk" : fonctionne, 3 words = a"no" | uk"
+a"no"'||u'k" : fonctionne, ne donne qu'un seul token

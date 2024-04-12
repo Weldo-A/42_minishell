@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:54:38 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 09:10:59 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 09:30:50 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_2d_array(char **str)
 	i = 0;
 	while (str[i])
 	{
-		ft_putstr("NEW_INPUT: ");
+		ft_putstr("\nNEW_INPUT: ");
 		ft_putstr(str[i]);
 		i++;
 	}
@@ -53,5 +53,7 @@ void	print_unidentified_tokens(size_t input_nb, t_list *inputs)
 			j++;
 		}
 		i++;
+		printf("\n");
 	}
+	printf("\n");
 }
