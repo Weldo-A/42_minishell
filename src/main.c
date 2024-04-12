@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:55:08 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 09:09:37 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 15:42:43 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	init_signal(void)
 	struct sigaction	sigint;
 	struct sigaction	sigquit;
 
-	ft_bzero(&sigint, sizeof(sigaction));
-	ft_bzero(&sigquit, sizeof(sigaction));
+	ft_bzero(&sigint, sizeof(sigint));
+	ft_bzero(&sigquit,sizeof(sigquit));
 	sigint.sa_handler = &sigint_handler;
 	sigquit.sa_handler = &sigquit_handler;
 	sigaction(SIGINT, &sigint, NULL);
