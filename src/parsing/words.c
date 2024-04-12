@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 13:17:49 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 18:27:10 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 20:00:44 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	check_quote(t_esc *esc_status, char *str)
 		return ;
 	}
 	else if ((esc_status->is_simplequote == true && str[i] == '\"') || \
-		(esc_status->is_simplequote == false && str[i] == '\"'))
+		(esc_status->is_simplequote == false && str[i] == '\''))
 		return ;
 	esc_status->is_quoted = false ;
 }
