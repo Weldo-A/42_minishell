@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:11:16 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 07:32:54 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 07:45:53 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ typedef struct s_wd_desc
 
 void	parsing(char *str, t_list **inputs);
 char	**newlines(char *str, size_t *input_nb);
-void	break_into_words(char **inputs_array, t_list **inputs, \
-		size_t input_nb);
+t_list	*break_into_words(char **inputs_array, size_t input_nb);
 
 //utils
 

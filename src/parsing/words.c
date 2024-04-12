@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 13:17:49 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 07:41:40 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 08:06:30 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static t_list	*input_into_words(char *str)
 	t_list		*words_list;
 	t_esc		esc_status;
 	t_wd_desc	word;
+	t_wd_desc	*tmp;
 	size_t		i;
 	size_t		j;
 
@@ -64,6 +65,8 @@ static t_list	*input_into_words(char *str)
 			{
 				word.word = ft_substr(str, j, i - j);
 				ft_lstadd_back(&words_list, ft_lstnew((void *)&word));
+				tmp = (t_wd_desc*)words_list->content;
+				printf("\ninputintowrds = %s\n", tmp->word);
 			}
 			if (!ft_isspace(str[i]))
 			{
@@ -88,20 +91,23 @@ static t_list	*input_into_words(char *str)
 			ft_lstadd_back(&words_list, ft_lstnew((void *)&word));
 		}
 	}
+	tmp = (t_wd_desc*)words_list->content;
+	printf("\neeeeinputintowrds = %s\n", tmp->word);
 	return (words_list);
 }
 
-void	break_into_words(char **inputs_array, t_list **inputs, \
-		size_t input_nb)
+t_list	*break_into_words(char **inputs_array, size_t input_nb)
 {
 	size_t	i;
+	t_list	*inputs;
 
 	i = 0;
-	*inputs = malloc(sizeof(t_list *) * input_nb);
+	inputs = malloc(sizeof(t_list) * input_nb);
 	while (i < input_nb)
 	{
-		inputs[i] = input_into_words(inputs_array[i]);
+		inputs[i] = *input_into_words(inputs_array[i]);
 		free(inputs_array[i]);
 		i++;
 	}
+	return (inputs);
 }
