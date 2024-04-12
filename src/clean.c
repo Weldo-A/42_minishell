@@ -6,7 +6,7 @@
 /*   By: aboulore <aboulore@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:56:53 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 18:32:37 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/13 01:24:11 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	free_before_id(t_list *inputs, size_t in_nb)
 	  printf("\nin\n");
 		lst = &inputs[i];
 		ft_lstclear(&lst, &del_wddesc);
+		free(*inputs[i]);
 		i++;
 	}
 }
