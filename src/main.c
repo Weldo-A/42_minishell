@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:55:08 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/11 16:38:49 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 07:05:16 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,31 @@ void	sigint_handler(int signum)
 	rl_redisplay();
 }
 
+void	sigquit_handler(int signum)
+{
+	if (signum != SIGQUIT)
+		return ;
+	sigflag = signum;
+}
+/*
+void	eof_handler(int signum)
+{
+	if (signum != NULL)
+		return ;
+
+}*/
+
 int	init_signal(void)
 {
 	struct sigaction	sigint;
+	struct sigaction	sigquit;
 
-	ft_bzero(&sigint, sizeof(sigint));
+	ft_bzero(&sigint, sizeof(sigaction));
+	ft_bzero(&sigquit, sizeof(sigaction));
 	sigint.sa_handler = &sigint_handler;
+	sigquit.sa_handler = &sigquit_handler;
 	sigaction(SIGINT, &sigint, NULL);
+	sigaction(SIGINT, &sigquit, NULL);
 	return (1);
 }
 
@@ -48,6 +66,11 @@ int	main(int argc, char **argv)
 	while (1)
 	{
 		cle = readline("$ ");
+		if (!cle)
+		{
+			free(cle);
+			break ;
+		}
 		if (ft_strlen(cle) > 0 && sigflag != SIGINT)
 			add_history(cle);
 		parsing(cle, &inputs);
