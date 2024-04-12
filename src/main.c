@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:55:08 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 07:52:33 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 09:09:37 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	init_signal(void)
 	sigint.sa_handler = &sigint_handler;
 	sigquit.sa_handler = &sigquit_handler;
 	sigaction(SIGINT, &sigint, NULL);
-	sigaction(SIGINT, &sigquit, NULL);
+	sigaction(SIGQUIT, &sigquit, NULL);
 	return (1);
 }
 
@@ -67,8 +67,9 @@ int	main(int argc, char **argv)
 		if (ft_strlen(cle) > 0 && sigflag != SIGINT)
 		{
 			add_history(cle);
-			parsing(cle, &inputs);
 		}
+		if (ft_strlen(cle) > 0)
+			parsing(cle, &inputs);
 		free(cle);
 	}
 	return (0);

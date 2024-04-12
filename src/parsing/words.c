@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 13:17:49 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 08:06:30 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 09:04:09 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,32 @@ static void	check_quote(t_esc *esc_status, char *str)
 	esc_status->is_quoted = false ;
 }
 
+static t_wd_desc	*new_wd_desc(int flags, char *word)
+{
+	t_wd_desc	*new;
+
+
+	new = malloc(sizeof(t_wd_desc));
+	if (!new)
+		ft_error();
+	new->flags = flags;
+	new->word = word;
+	return (new);
+}
+
 static t_list	*input_into_words(char *str)
 {
 	t_list		*words_list;
 	t_esc		esc_status;
-	t_wd_desc	word;
-	t_wd_desc	*tmp;
+//	t_wd_desc	*tmp;
+	t_wd_desc	*tmp_w;
 	size_t		i;
 	size_t		j;
 
 	i = 0;
 	j = 0;
 	words_list = NULL;
+	//printf("\nwl addr %p\n", words_list);
 	esc_status.is_quoted = false;
 	while (str[i])
 	{
@@ -63,21 +77,24 @@ static t_list	*input_into_words(char *str)
 		{
 			if (j != i)
 			{
-				word.word = ft_substr(str, j, i - j);
-				ft_lstadd_back(&words_list, ft_lstnew((void *)&word));
-				tmp = (t_wd_desc*)words_list->content;
-				printf("\ninputintowrds = %s\n", tmp->word);
+				tmp_w = new_wd_desc(0, ft_substr(str, j, i - j));
+				ft_lstadd_back(&words_list, ft_lstnew((void *)tmp_w));
+
+	//			tmp = (t_wd_desc*)words_list->content;
+	//			printf("\ninputintowrds = %s\n", tmp->word);
+	//			printf("\nwl addr = %p\n", words_list);
+	//			printf("\nwl.cnt addr = %p\n", words_list->content);
 			}
 			if (!ft_isspace(str[i]))
 			{
 				if (!ft_strchr("()", str[i]) && str[i + 1] == str[i])
 				{
-					word.word = ft_substr(&str[i], 0, 2);
+					tmp_w = new_wd_desc(0, ft_substr(&str[i], 0, 2));
 					i++;
 				}
 				else
-					word.word = ft_substr(&str[i], 0, 1);
-				ft_lstadd_back(&words_list, ft_lstnew((void *)&word));
+					tmp_w = new_wd_desc(0, ft_substr(&str[i], 0, 1));
+				ft_lstadd_back(&words_list, ft_lstnew((void *)tmp_w));
 			}
 			j = i + 1;
 		}
@@ -87,12 +104,10 @@ static t_list	*input_into_words(char *str)
 	{
 		if (j != i)
 		{
-			word.word = ft_substr(str, j, i - j);
-			ft_lstadd_back(&words_list, ft_lstnew((void *)&word));
+			tmp_w = new_wd_desc(0, ft_substr(str, j, i - j));
+			ft_lstadd_back(&words_list, ft_lstnew((void *)tmp_w));
 		}
 	}
-	tmp = (t_wd_desc*)words_list->content;
-	printf("\neeeeinputintowrds = %s\n", tmp->word);
 	return (words_list);
 }
 
