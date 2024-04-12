@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:11:16 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 07:45:53 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:12:56 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_list	*break_into_words(char **inputs_array, size_t input_nb);
 //utils
 
 void	ft_error(void);
+void	free_before_id(t_list *inputs);
 
 //side
 

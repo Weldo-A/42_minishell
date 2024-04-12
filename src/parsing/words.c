@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 13:17:49 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 09:04:09 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:25:19 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ t_list	*break_into_words(char **inputs_array, size_t input_nb)
 	t_list	*inputs;
 
 	i = 0;
-	inputs = malloc(sizeof(t_list) * input_nb);
+	inputs = malloc(sizeof(t_list) * input_nb + 1);
+	ft_lstadd_back(&(&inputs)[0], ft_lstnew(new_wd_desc(input_nb, "input_nb")));
 	while (i < input_nb)
 	{
 		inputs[i] = *input_into_words(inputs_array[i]);

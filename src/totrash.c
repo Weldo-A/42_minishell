@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:54:38 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 09:30:50 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:13:38 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	print_unidentified_tokens(size_t input_nb, t_list *inputs)
 	t_list	*tmp;
 	t_wd_desc	*word;
 
-	i = 0;
+	i = 1;
 	printf("\nDATA BEFORE IDENTIFICATION\n");
-	while (i < input_nb)
+	while (i <= input_nb)
 	{
 		printf("\nINPUT N°%zu\n", i);
 		tmp = &inputs[i];

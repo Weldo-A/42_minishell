@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:55:08 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 15:42:43 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:15:44 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ int	main(int argc, char **argv)
 			parsing(cle, &inputs);
 		free(cle);
 	}
+	free_before_id(inputs);
 	return (0);
 }

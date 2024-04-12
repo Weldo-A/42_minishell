@@ -6,7 +6,7 @@ LIBS_TGT := lib/libft/libft.a
 HEAD := headers lib/libft/headers
 
 SRC_DIR := src
-SRC_FILES := totrash.c main.c errors.c parsing/newlines.c parsing/parsing.c parsing/words.c
+SRC_FILES := totrash.c main.c errors.c clean.c parsing/newlines.c parsing/parsing.c parsing/words.c
 
 SRC := $(SRC_FILES:%.c=$(SRC_DIR)/%.c)
 
