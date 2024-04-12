@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:55:08 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 16:15:44 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 18:35:02 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	init_signal(void)
 	struct sigaction	sigquit;
 
 	ft_bzero(&sigint, sizeof(sigint));
-	ft_bzero(&sigquit,sizeof(sigquit));
+	ft_bzero(&sigquit, sizeof(sigquit));
 	sigint.sa_handler = &sigint_handler;
 	sigquit.sa_handler = &sigquit_handler;
 	sigaction(SIGINT, &sigint, NULL);
@@ -49,6 +49,7 @@ int	init_signal(void)
 int	main(int argc, char **argv)
 {
 	t_list	*inputs;
+	size_t	in_nb;
 
 	char *cle;
 	(void)argv;
@@ -69,9 +70,9 @@ int	main(int argc, char **argv)
 			add_history(cle);
 		}
 		if (ft_strlen(cle) > 0)
-			parsing(cle, &inputs);
+			in_nb = parsing(cle, &inputs);
 		free(cle);
+		free_before_id(inputs, in_nb);
 	}
-	free_before_id(inputs);
 	return (0);
 }

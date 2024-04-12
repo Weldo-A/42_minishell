@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   free_array_3d.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboulore <aboulore@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 15:56:53 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 18:32:37 by aboulore         ###   ########.fr       */
+/*   Created: 2024/04/12 17:17:41 by aboulore          #+#    #+#             */
+/*   Updated: 2024/04/12 17:23:57 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-static void	del_wddesc(void *word)
+void    free_array_3d(char ***array)
 {
-	t_wd_desc	*del;
+        int     i;
 
-	del = (t_wd_desc *)word;
-	free(del->word);
-	free(del);
-}
-
-void	free_before_id(t_list *inputs, size_t in_nb)
-{
-	size_t	i;
-	t_list	*lst;
-
-	i = 0;
-	while (i < in_nb)
-	{
-	  printf("\nin\n");
-		lst = &inputs[i];
-		ft_lstclear(&lst, &del_wddesc);
-		i++;
-	}
+        i = 0;
+        while (array[i])
+        {
+                free_array_2d(array[i]);
+                i++;
+        }
+        free(array);
+        array = NULL;
 }

@@ -6,13 +6,13 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 10:33:37 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 09:11:22 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 17:26:31 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	parsing(char *str, t_list **inputs)
+size_t	parsing(char *str, t_list **inputs)
 {
 	size_t		input_nb;
 	char		**inputs_arr;
@@ -28,4 +28,5 @@ void	parsing(char *str, t_list **inputs)
 
 
 //parsr
+	return (input_nb);
 }
