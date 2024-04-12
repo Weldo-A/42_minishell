@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:55:08 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/12 07:05:16 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 07:09:03 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,6 @@ void	sigquit_handler(int signum)
 		return ;
 	sigflag = signum;
 }
-/*
-void	eof_handler(int signum)
-{
-	if (signum != NULL)
-		return ;
-
-}*/
 
 int	init_signal(void)
 {

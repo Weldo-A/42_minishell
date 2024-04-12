@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:11:16 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/11 16:27:46 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/12 07:32:54 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void	ft_error(void);
 //side
 
 void	print_2d_array(char **str);
+void	print_unidentified_tokens(size_t input_nb, t_list *inputs);
 
 #endif
