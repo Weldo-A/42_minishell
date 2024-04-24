@@ -15,7 +15,7 @@ OBJ := $(SRC:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS := $(OBJ:.o=.d)
 
 CC := clang
-CFLAGS := -Wall -Wextra -Werror -g -gdwarf-4 -O
+CFLAGS := -Wall -Wextra -Werror -g -gdwarf-4 -O -O0
 PREPFLAGS := $(addprefix -I, $(HEAD)) -MMD -MP
 LDFLAGS := -Llib/libft -Lheaders -lreadline -lhistory
 LDLIBS := -lft

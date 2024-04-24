@@ -32,6 +32,8 @@ void	free_before_id(t_list *inputs, size_t in_nb)
 
 	i = 0;
 	tmp = inputs;
+	if (!tmp)
+		return ;
 	while (i < in_nb)
 	{
 		del = (t_list *)tmp->content;

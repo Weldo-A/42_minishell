@@ -6,7 +6,7 @@
 /*   By: aboulore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:54:38 by aboulore          #+#    #+#             */
-/*   Updated: 2024/04/13 00:40:37 by aboulore         ###   ########.fr       */
+/*   Updated: 2024/04/24 09:43:15 by aboulore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	print_unidentified_tokens(size_t input_nb, t_list *inputs)
 	while (i < input_nb)
 	{
 		printf("\nINPUT N°%zu\n", i);
-		size_input = ft_lstsize(tmp->content);
 		j = 0;
 		tmp2 = (t_list *)tmp->content;
+		size_input = ft_lstsize(tmp2);
 		while (j < size_input)
 		{
 			printf("\nTOKEN N°%zu = ", j);
